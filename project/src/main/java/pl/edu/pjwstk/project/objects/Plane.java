@@ -4,7 +4,7 @@ import java.util.List;
 
 import pl.edu.pjwstk.project.services.DBmanager;
 
-public class Plane implements PlaneInterface{
+public class Plane{
 	
 	private String name;
 	private int tailNumber;
@@ -12,8 +12,6 @@ public class Plane implements PlaneInterface{
 	private int passengers;
 	private String destination;
 	private boolean readyToGo;
-	
-	DBmanager db=DBmanager.getInstance();
 	
 	public Plane(String name, int tailNumber, int capacity,int passengers, String destination, boolean readyToGo){
 		this.name=name;
@@ -49,33 +47,9 @@ public class Plane implements PlaneInterface{
 		return readyToGo;
 	}
 
+	public String toString(){
 	
-	//metody
-	public boolean addPlane(Plane obj) {
-		return db.addPlane(obj);
-	}
-
-	public void removePlane() {
-		
-	}
-	public List<PlaneInterface> getAll() {
-		
-		return null;
-	}
-
-	public void addPassenger() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void removePassenger() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void removeAllPassengers() {
-		// TODO Auto-generated method stub
-		
+		return "Planes name:"+name+" tailnumber:"+tailNumber+" capacity:"+capacity+" passengers:"+passengers+" destination:"+destination+" ready:"+readyToGo;
 	}
 
 

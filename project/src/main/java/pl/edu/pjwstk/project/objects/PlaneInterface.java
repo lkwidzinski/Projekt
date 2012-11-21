@@ -5,11 +5,11 @@ import java.util.List;
 public interface PlaneInterface {
 	
 	boolean addPlane(Plane obj);
-	void removePlane();
-	List<PlaneInterface> getAll();
-	void addPassenger();
-	void removePassenger();
-	void removeAllPassengers();
+	boolean removePlane(Plane obj);
+	List<Plane> getAll();
+	boolean addPassenger(Plane obj);
+	boolean removePassenger();
+	boolean removeAllPassengers();
 	
 	
 	
