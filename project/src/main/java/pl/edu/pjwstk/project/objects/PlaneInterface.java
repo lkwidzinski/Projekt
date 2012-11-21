@@ -8,8 +8,8 @@ public interface PlaneInterface {
 	boolean removePlane(Plane obj);
 	List<Plane> getAll();
 	boolean addPassenger(Plane obj);
-	boolean removePassenger();
-	boolean removeAllPassengers();
+	boolean removePassenger(Plane obj);
+	boolean removeAllPassengers(Plane obj);
 	
 	
 	

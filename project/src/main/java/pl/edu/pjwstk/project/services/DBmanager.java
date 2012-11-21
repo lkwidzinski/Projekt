@@ -25,8 +25,8 @@ public final class DBmanager {
 	private String removePlaneSQL="DELETE FROM Planes where name=?;";
 	private String getAllSQL="SELECT * from Planes;";
 	private String addPassengerSQL="UPDATE Planes SET passengers=passengers+1 WHERE name=?";
-	private String removePassengerSQL="";
-	private String removeAllPassengersSQL="";
+	private String removePassengerSQL="UPDATE Planes SET passengers=passengers-1 WHERE name=?";
+	private String removeAllPassengersSQL="UPDATE Planes SET passengers=0 WHERE name=?";
 	
 	
 	PreparedStatement addPlane;
@@ -62,8 +62,8 @@ public final class DBmanager {
 			removePlane=connection.prepareStatement(removePlaneSQL);
 			getAll=connection.prepareStatement(getAllSQL);
 			addPassenger=connection.prepareStatement(addPassengerSQL);
-			/*removePassenger=connection.prepareStatement(removePlaneSQL);
-			removeAllPassengers=connection.prepareStatement(removeAllPassengersSQL);*/
+			removePassenger=connection.prepareStatement(removePassengerSQL);
+			removeAllPassengers=connection.prepareStatement(removeAllPassengersSQL);
 			
 			} catch (SQLException e) {
 			e.printStackTrace();
@@ -137,5 +137,22 @@ public final class DBmanager {
 		}
 		return false;
 	}
-	
+	public boolean removePassenger(Plane obj) {
+		try {
+		removePassenger.setString(1, obj.getName());
+		return removePassenger.execute();
+		} catch (SQLException e) {
+		e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean removeAllPassengers(Plane obj) {
+		try {
+		removeAllPassengers.setString(1, obj.getName());
+		return removeAllPassengers.execute();
+		} catch (SQLException e) {
+		e.printStackTrace();
+		}
+		return false;
+	}
 }

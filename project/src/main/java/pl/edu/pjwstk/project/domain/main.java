@@ -18,7 +18,6 @@ public class main {
 		PlaneManager mgr=new PlaneManager();
 		mgr.addPlane(pl);
 		mgr.addPlane(p2);
-		mgr.addPlane(pl);
 		
 		List<Plane> planes=mgr.getAll();
 		for(Plane p : planes){
@@ -26,7 +25,12 @@ public class main {
 		}
 		
 		mgr.addPassenger(p2);
-		
+		mgr.removePassenger(pl);
+		mgr.removeAllPassengers(p2);
+		planes=mgr.getAll();
+		for(Plane p : planes){
+			System.out.println(p);
+		}
 
 	}
 
