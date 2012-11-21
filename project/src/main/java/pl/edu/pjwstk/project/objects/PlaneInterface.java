@@ -7,6 +7,9 @@ public interface PlaneInterface {
 	void addPlane();
 	void removePlane();
 	List<PlaneInterface> getAll();
+	void addPassenger();
+	void removePassenger();
+	void removeAllPassengers();
 	
 	
 	

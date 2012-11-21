@@ -9,6 +9,7 @@ public class Plane implements PlaneInterface{
 	private String name;
 	private int tailNumber;
 	private int capacity;
+	private int passengers;
 	private String destination;
 	private boolean readyToGo;
 	
@@ -23,18 +24,30 @@ public class Plane implements PlaneInterface{
 		
 	}
 	
-	@Override
 	public void addPlane() {
 		
 	}
-	@Override
 	public void removePlane() {
 		
 	}
-	@Override
 	public List<PlaneInterface> getAll() {
 		
 		return null;
+	}
+
+	public void addPassenger() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removePassenger() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeAllPassengers() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
