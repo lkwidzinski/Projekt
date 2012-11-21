@@ -1,12 +1,18 @@
 package pl.edu.pjwstk.project.domain;
 
+import pl.edu.pjwstk.project.objects.Plane;
+
 public class main {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
+		Plane pl=new Plane("nazwa",1,1,1,"dest",true);
+		pl.addPlane(pl);
+		pl.addPlane(pl);
+		
 
 	}
 

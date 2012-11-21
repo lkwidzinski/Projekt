@@ -15,18 +15,46 @@ public class Plane implements PlaneInterface{
 	
 	DBmanager db=DBmanager.getInstance();
 	
-	public Plane(String name, int tailNumber, int capacity, String destination, boolean readyToGo){
+	public Plane(String name, int tailNumber, int capacity,int passengers, String destination, boolean readyToGo){
 		this.name=name;
 		this.tailNumber=tailNumber;
 		this.capacity=capacity;
+		this.passengers=passengers;
 		this.destination=destination;
 		this.readyToGo=readyToGo;
 		
 	}
-	
-	public void addPlane() {
-		
+	//get
+	public String getName() {
+		return name;
 	}
+
+	public int getTailNumber() {
+		return tailNumber;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public int getPassengers() {
+		return passengers;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public boolean isReadyToGo() {
+		return readyToGo;
+	}
+
+	
+	//metody
+	public boolean addPlane(Plane obj) {
+		return db.addPlane(obj);
+	}
+
 	public void removePlane() {
 		
 	}
@@ -49,5 +77,6 @@ public class Plane implements PlaneInterface{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

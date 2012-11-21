@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface PlaneInterface {
 	
-	void addPlane();
+	boolean addPlane(Plane obj);
 	void removePlane();
 	List<PlaneInterface> getAll();
 	void addPassenger();
