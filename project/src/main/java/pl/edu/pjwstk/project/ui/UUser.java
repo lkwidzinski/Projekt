@@ -1,14 +1,92 @@
 package pl.edu.pjwstk.project.ui;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+
+import pl.edu.pjwstk.project.objects.Plane;
+import pl.edu.pjwstk.project.services.PlaneManager;
+
 public class UUser implements UInterface{
 	
-	public UUser(){
+	BufferedReader c=new BufferedReader(new InputStreamReader(System.in));
+	PlaneManager mgr=new PlaneManager();
+	
+	public UUser() throws IOException{
+		selector();
+	}
+
+	public void selector() throws IOException {
+		
+		System.out.println("**********************************************");
+		System.out.println("Welcome to the airport user access:");
+		System.out.println("1. Check the status of all planes.");
+		System.out.println("2. Check the planes with destination.");
+		System.out.println("Select option:");
+		
+		int x=0;
+		try {
+			x = Integer.parseInt(c.readLine());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		switch(x){
+		case 1:   status();    ;break;
+		case 2:   check();	   ;break;
+		
+		}
+		
+	}
+	public void status() throws IOException{
+		
+		PlaneManager mgr=new PlaneManager();
+		System.out.println("***************************************************************************************");
+		System.out.format("%15s||%10s||%8s||%10s||%15s||%8s\n","NAME","TAILNUMBER","CAPACITY","PASSENGERS","DESTINATION","READY");
+		List<Plane> planes=mgr.getAll();
+		for(Plane p : planes){
+			System.out.println(p);
+		}
+		continueWork();
+		
+	}
+	
+	public void check() throws IOException{
+		String destination;
+		System.out.println("******Searching for planes with destination**************");
+		System.out.println("Destination:");
+		destination=c.readLine();
+		List<Plane> planes=mgr.getAll();
+		for(Plane p : planes){
+			if (p.getDestination().equalsIgnoreCase(destination)){
+				System.out.println(p);
+			}
+		}
+		continueWork();
+	}
+	
+	
+	public void continueWork() throws IOException{
+		
+		System.out.println("Continue?Y/N");
+		String z=c.readLine();
+		if(z.equalsIgnoreCase("Y")){
+			selector();
+		}
+		else{
+			System.out.println("Exiting application.");
+			System.exit(0);
+		}
 		
 	}
 
-	public void selector() {
-		// TODO Auto-generated method stub
-		
+	@Override
+	public void goBack() throws IOException {
+		new USelector();	
 	}
+	
 
 }

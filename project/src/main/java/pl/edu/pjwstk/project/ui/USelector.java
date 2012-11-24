@@ -4,15 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class USelector implements UInterface{
+public class USelector {
 
 	
-	public USelector(){
+	public USelector() throws IOException{
 		
 		selector();
 	}
-	@Override
-	public void selector() {
+	public void selector() throws IOException {
 		
 		System.out.println("*********************************************");
 		System.out.println("Welcome to the airport management application.");
@@ -40,7 +39,8 @@ public class USelector implements UInterface{
 	}
 	public void exit(){
 		
-		
+		System.out.println("Exiting application.");
+		System.exit(0);
 		
 	}
 	

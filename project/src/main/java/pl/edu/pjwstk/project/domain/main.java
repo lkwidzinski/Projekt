@@ -1,5 +1,6 @@
 package pl.edu.pjwstk.project.domain;
 
+import java.io.IOException;
 import java.util.List;
 
 import pl.edu.pjwstk.project.objects.Plane;
@@ -12,8 +13,9 @@ public class main {
 
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 	
 		//new ExamplePlaneMaker();
 		new USelector();
