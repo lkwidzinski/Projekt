@@ -6,7 +6,7 @@ public class UUser implements UInterface{
 		
 	}
 
-	public void selector(int x) {
+	public void selector() {
 		// TODO Auto-generated method stub
 		
 	}

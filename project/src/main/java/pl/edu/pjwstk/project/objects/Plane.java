@@ -49,7 +49,12 @@ public class Plane{
 
 	public String toString(){
 	
-		return "Planes name:"+name+" tailnumber:"+tailNumber+" capacity:"+capacity+" passengers:"+passengers+" destination:"+destination+" ready:"+readyToGo;
+		String s=String.format("%15s||%10s||%8s||%10s||%15s||%8s\n",name,tailNumber,capacity,passengers,destination,readyToGo);
+		
+		
+		/*String s=""+name+""+tailNumber+""+capacity+""+passengers+""+destination+""+readyToGo;
+		s.format("%15s",name,tailNumber,capacity,passengers,destination,readyToGo);*/
+		return s;
 	}
 
 

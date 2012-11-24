@@ -1,9 +1,24 @@
 package pl.edu.pjwstk.project.ui;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+
+import pl.edu.pjwstk.project.objects.Plane;
+import pl.edu.pjwstk.project.services.PlaneManager;
+
 public class UAdmin implements UInterface{
 
 	
 	public UAdmin(){
+		
+		selector();
+		
+	}
+	
+	public void selector(){
+		
 		
 		
 		System.out.println("*********************************************");
@@ -14,10 +29,17 @@ public class UAdmin implements UInterface{
 		System.out.println("4. Remove plane from DB.");
 		System.out.println("5. Update status of a plane.");
 		System.out.println("6. Exit.");
+		System.out.println("Select option:");
 		
-	}
-	
-	public void selector(int x){
+		BufferedReader c=new BufferedReader(new InputStreamReader(System.in));
+		int x=0;
+		try {
+			x = Integer.parseInt(c.readLine());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		switch(x){
 		case 1:   status();    ;break;
@@ -29,6 +51,14 @@ public class UAdmin implements UInterface{
 		}
 	}
 	public void status(){
+		
+		PlaneManager mgr=new PlaneManager();
+		System.out.println("***************************************************************************************");
+		System.out.format("%15s||%10s||%8s||%10s||%15s||%8s\n","NAME","TAILNUMBER","CAPACITY","PASSENGERS","DESTINATION","READY");
+		List<Plane> planes=mgr.getAll();
+		for(Plane p : planes){
+			System.out.println(p);
+		}
 		
 	}
 	

@@ -5,6 +5,8 @@ import java.util.List;
 import pl.edu.pjwstk.project.objects.Plane;
 import pl.edu.pjwstk.project.objects.PlaneInterface;
 import pl.edu.pjwstk.project.services.PlaneManager;
+import pl.edu.pjwstk.project.ui.UAdmin;
+import pl.edu.pjwstk.project.ui.USelector;
 
 public class main {
 
@@ -13,18 +15,8 @@ public class main {
 	 */
 	public static void main(String[] args) {
 	
-		
-		
-		PlaneManager mgr=new PlaneManager();
-		List<Plane> planes=mgr.getAll();
-		for(Plane p : planes){
-			System.out.println(p);
-		}
-
-		planes=mgr.getAll();
-		for(Plane p : planes){
-			System.out.println(p);
-		}
+		//new ExamplePlaneMaker();
+		new USelector();
 
 	}
 
