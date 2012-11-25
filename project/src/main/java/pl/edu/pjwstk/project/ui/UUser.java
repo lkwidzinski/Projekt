@@ -23,6 +23,9 @@ public class UUser implements UInterface{
 		System.out.println("Welcome to the airport user access:");
 		System.out.println("1. Check the status of all planes.");
 		System.out.println("2. Check the planes with destination.");
+		System.out.println("3. Add passenger.");
+		System.out.println("4. Remove passenger.");
+		System.out.println("5. Go back.");
 		System.out.println("Select option:");
 		
 		int x=0;
@@ -35,9 +38,13 @@ public class UUser implements UInterface{
 		}
 		
 		switch(x){
-		case 1:   status();    ;break;
-		case 2:   check();	   ;break;
-		
+		case 1:   status();         ;break;
+		case 2:   check();	        ;break;
+		case 3:   addPassenger();   ;break;
+		case 4:   removePassenger();;break;
+		case 5:   goBack()          ;break;
+		default: System.out.println("Invalid number.");
+                 selector();        ;break;
 		}
 		
 	}
@@ -68,6 +75,26 @@ public class UUser implements UInterface{
 		continueWork();
 	}
 	
+	public void addPassenger() throws IOException{
+		
+		String tailNumber;
+		System.out.println("******Adding passenger**************");
+		System.out.println("Tailnumber:");
+		tailNumber=c.readLine();
+		mgr.addPassenger(new Plane("", tailNumber, 0, 0, "", false));
+		continueWork();
+	}
+	
+	public void removePassenger() throws IOException{
+		
+		String tailNumber;
+		System.out.println("******Removing passenger**************");
+		System.out.println("Tailnumber:");
+		tailNumber=c.readLine();
+		mgr.removePassenger(new Plane("", tailNumber, 0, 0, "", false));
+		continueWork();
+		
+	}
 	
 	public void continueWork() throws IOException{
 		

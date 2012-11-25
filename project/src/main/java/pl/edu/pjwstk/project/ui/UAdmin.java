@@ -47,6 +47,8 @@ public class UAdmin implements UInterface{
 		case 3:   remove();    ;break;
 		case 4:   update();    ;break;
 		case 5:   goBack();    ;break;
+		default: System.out.println("Invalid number.");
+                 selector();   ;break;
 		}
 	}
 	public void status() throws IOException{

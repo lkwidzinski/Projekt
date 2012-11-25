@@ -5,6 +5,7 @@ import java.io.IOException;
 public interface UInterface {
 	
 	void selector() throws IOException;
+	void status() throws IOException;
 	void continueWork() throws IOException;
 	void goBack() throws IOException;
 }

@@ -22,11 +22,11 @@ public final class DBmanager {
 					"destination varchar(20), readytogo boolean);";
 	private String addPlaneSQL="INSERT INTO Planes (name,tailnumber,capacity,passengers,destination,readytogo) " +
 			"VALUES (?,?,?,?,?,?);";
-	private String removePlaneSQL="DELETE FROM Planes where name=?;";
+	private String removePlaneSQL="DELETE FROM Planes where tailnumber=?;";
 	private String getAllSQL="SELECT * from Planes;";
-	private String addPassengerSQL="UPDATE Planes SET passengers=passengers+1 WHERE name=?";
-	private String removePassengerSQL="UPDATE Planes SET passengers=passengers-1 WHERE name=?";
-	private String removeAllPassengersSQL="UPDATE Planes SET passengers=0 WHERE name=?";
+	private String addPassengerSQL="UPDATE Planes SET passengers=passengers+1 WHERE tailnumber=?";
+	private String removePassengerSQL="UPDATE Planes SET passengers=passengers-1 WHERE tailnumber=?";
+	private String removeAllPassengersSQL="UPDATE Planes SET passengers=0 WHERE tailnumber=?";
 	
 	
 	PreparedStatement addPlane;

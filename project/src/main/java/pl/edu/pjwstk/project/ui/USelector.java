@@ -34,6 +34,8 @@ public class USelector {
 		case 1:   new UAdmin();   ;break;
 		case 2:   new UUser();    ;break;
 		case 3:   exit();         ;break;
+		default: System.out.println("Invalid number.");
+		         selector();      ;break;
 		}
 		
 	}
