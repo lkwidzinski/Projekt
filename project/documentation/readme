@@ -1,0 +1,8 @@
+Read me.
+
+Aplikacja jest systemem rezerwacji miejsc w samolotach. Administrator ma mozliwosc przegladania, dodawania, usuwania samolotow,
+zerowania rezerwacji i zmiane gotowosci do lotu. Uzytkownik ma mozliwosc przegladania, wyszukiwania samolotow wzgledem miejsca docelowego,
+dodawania rezerwacji oraz usuwania.
+
+Aplikacja obslugiwana jest w konsoli, docelowo jednak bedzie korzystac z interfejsu graficznego. Powinna rowniez zostac dodana
+obsluga wielowatkowosci. 

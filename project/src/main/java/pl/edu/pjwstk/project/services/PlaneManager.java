@@ -7,7 +7,7 @@ import pl.edu.pjwstk.project.objects.PlaneInterface;
 
 public class PlaneManager implements PlaneInterface{
 
-	DBmanager db=DBmanager.getInstance();
+	private DBmanager db=DBmanager.getInstance();
 	
 	public boolean addPlane(Plane obj) {
 		return db.addPlane(obj);
