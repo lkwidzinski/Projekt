@@ -1,14 +1,7 @@
 package pl.edu.pjwstk.project.domain;
 
 import java.io.IOException;
-import java.util.List;
-
-import pl.edu.pjwstk.project.objects.Person;
-import pl.edu.pjwstk.project.objects.Plane;
-import pl.edu.pjwstk.project.objects.PlaneInterface;
-import pl.edu.pjwstk.project.services.PersonManager;
-import pl.edu.pjwstk.project.services.PlaneManager;
-import pl.edu.pjwstk.project.ui.UAdmin;
+import java.sql.SQLException;
 import pl.edu.pjwstk.project.ui.USelector;
 
 public class main {
@@ -16,8 +9,9 @@ public class main {
 	/**
 	 * @param args
 	 * @throws IOException 
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, SQLException {
 	
 		//new ExamplePlaneMaker();
 		new USelector();

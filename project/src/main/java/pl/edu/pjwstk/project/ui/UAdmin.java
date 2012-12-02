@@ -3,6 +3,7 @@ package pl.edu.pjwstk.project.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.List;
 
 import pl.edu.pjwstk.project.objects.Plane;
@@ -13,13 +14,13 @@ public class UAdmin implements UInterface{
 	BufferedReader c=new BufferedReader(new InputStreamReader(System.in));
 	PlaneManager mgr=new PlaneManager();
 	
-	public UAdmin() throws IOException{
+	public UAdmin() throws IOException, SQLException{
 		
 		selector();
 		
 	}
 	
-	public void selector() throws IOException{
+	public void selector() throws IOException, SQLException{
 		
 		
 		
@@ -51,7 +52,7 @@ public class UAdmin implements UInterface{
                  selector();   ;break;
 		}
 	}
-	public void status() throws IOException{
+	public void status() throws IOException, SQLException{
 		
 		PlaneManager mgr=new PlaneManager();
 		System.out.println("***************************************************************************************");
@@ -64,7 +65,7 @@ public class UAdmin implements UInterface{
 		
 	}
 	
-	public void add() throws IOException{
+	public void add() throws IOException, SQLException{
 		
 		String name;
 		String tailNumber;
@@ -92,7 +93,7 @@ public class UAdmin implements UInterface{
 		System.out.println("Added plane.");
 		continueWork();
 	}
-	public void remove() throws IOException{
+	public void remove() throws IOException, SQLException{
 		
 		String tailNumber;
 		System.out.println("******Removal of a plane**************");
@@ -102,7 +103,7 @@ public class UAdmin implements UInterface{
 		continueWork();
 	}
 	
-	public void update() throws IOException{
+	public void update() throws IOException, SQLException{
 		String tailNumber;
 		System.out.println("******Removing all passengers from a plane**************");
 		System.out.println("Tailnumber:");
@@ -112,10 +113,10 @@ public class UAdmin implements UInterface{
 		
 	}
 	
-	public void goBack() throws IOException{
+	public void goBack() throws IOException, SQLException{
 		new USelector();
 	}
-	public void continueWork() throws IOException{
+	public void continueWork() throws IOException, SQLException{
 		
 		System.out.println("Continue?Y/N");
 		String z=c.readLine();

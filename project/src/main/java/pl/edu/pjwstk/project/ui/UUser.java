@@ -3,6 +3,7 @@ package pl.edu.pjwstk.project.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.List;
 
 import pl.edu.pjwstk.project.objects.Person;
@@ -15,11 +16,11 @@ public class UUser implements UInterface{
 	BufferedReader c=new BufferedReader(new InputStreamReader(System.in));
 	PlaneManager mgr=new PlaneManager();
 	
-	public UUser() throws IOException{
+	public UUser() throws IOException, SQLException{
 		selector();
 	}
 
-	public void selector() throws IOException {
+	public void selector() throws IOException, SQLException {
 		
 		System.out.println("**********************************************");
 		System.out.println("Welcome to the airport user access:");
@@ -56,7 +57,7 @@ public class UUser implements UInterface{
 		}
 		
 	}
-	public void status() throws IOException{
+	public void status() throws IOException, SQLException{
 		
 		PlaneManager mgr=new PlaneManager();
 		System.out.println("***************************************************************************************");
@@ -69,7 +70,7 @@ public class UUser implements UInterface{
 		
 	}
 	
-	public void check() throws IOException{
+	public void check() throws IOException, SQLException{
 		String destination;
 		System.out.println("******Searching for planes with destination**************");
 		System.out.println("Destination:");
@@ -83,17 +84,20 @@ public class UUser implements UInterface{
 		continueWork();
 	}
 	
-	public void addPassenger() throws IOException{
+	public void addPassenger() throws IOException, SQLException{
 		
 		String tailNumber;
+		int pesel;
 		System.out.println("******Adding passenger**************");
 		System.out.println("Tailnumber:");
 		tailNumber=c.readLine();
-		mgr.addPassenger(new Plane("", tailNumber, 0, 0, "", false));
+		System.out.println("PESEL:");
+		pesel=Integer.parseInt(c.readLine());
+		mgr.addPassenger(new Plane("", tailNumber, 0, 0, "", false),new Person("","",pesel,""));
 		continueWork();
 	}
 	
-	public void removePassenger() throws IOException{
+	public void removePassenger() throws IOException, SQLException{
 		
 		String tailNumber;
 		System.out.println("******Removing passenger**************");
@@ -104,7 +108,7 @@ public class UUser implements UInterface{
 		
 	}
 	
-	public void addPersonDB() throws IOException{
+	public void addPersonDB() throws IOException, SQLException{
 		
 		PersonManager mgr=new PersonManager();
 		String firstName;
@@ -126,7 +130,7 @@ public class UUser implements UInterface{
 		System.out.println("Dodano do bazy.");
 		continueWork();
 	}
-	public void removePersonDB() throws IOException{
+	public void removePersonDB() throws IOException, SQLException{
 		PersonManager mgr=new PersonManager();
 		int pesel;
 		System.out.println("******Remove person from database**************");
@@ -135,7 +139,7 @@ public class UUser implements UInterface{
 		mgr.removePerson(new Person("", "", pesel, ""));
 		continueWork();
 	}
-	public void statusPerson() throws IOException{
+	public void statusPerson() throws IOException, SQLException{
 		
 		PersonManager mgr=new PersonManager();
 		System.out.println("***************************************************************************************");
@@ -148,7 +152,7 @@ public class UUser implements UInterface{
 		
 	}
 	
-	public void continueWork() throws IOException{
+	public void continueWork() throws IOException, SQLException{
 		
 		System.out.println("Continue?Y/N");
 		String z=c.readLine();
@@ -163,7 +167,7 @@ public class UUser implements UInterface{
 	}
 
 	@Override
-	public void goBack() throws IOException {
+	public void goBack() throws IOException, SQLException {
 		new USelector();	
 	}
 	

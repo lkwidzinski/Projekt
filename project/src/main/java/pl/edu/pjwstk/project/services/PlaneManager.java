@@ -1,7 +1,9 @@
 package pl.edu.pjwstk.project.services;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import pl.edu.pjwstk.project.objects.Person;
 import pl.edu.pjwstk.project.objects.Plane;
 import pl.edu.pjwstk.project.objects.PlaneInterface;
 
@@ -22,8 +24,8 @@ public class PlaneManager implements PlaneInterface{
 		return db.getAll();
 	}
 
-	public boolean addPassenger(Plane obj) {
-		return db.addPassenger(obj);
+	public boolean addPassenger(Plane obj,Person p) throws SQLException {
+		return db.addPassenger(obj,p);
 	}
 
 	public boolean removePassenger(Plane obj) {

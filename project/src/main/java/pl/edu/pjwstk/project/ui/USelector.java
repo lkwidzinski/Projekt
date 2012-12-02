@@ -3,15 +3,16 @@ package pl.edu.pjwstk.project.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 
 public class USelector {
 
 	
-	public USelector() throws IOException{
+	public USelector() throws IOException, SQLException{
 		
 		selector();
 	}
-	public void selector() throws IOException {
+	public void selector() throws IOException, SQLException {
 		
 		System.out.println("*********************************************");
 		System.out.println("Welcome to the airport management application.");
