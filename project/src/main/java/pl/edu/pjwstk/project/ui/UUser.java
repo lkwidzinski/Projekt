@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import pl.edu.pjwstk.project.objects.Person;
 import pl.edu.pjwstk.project.objects.Plane;
+import pl.edu.pjwstk.project.services.PersonManager;
 import pl.edu.pjwstk.project.services.PlaneManager;
 
 public class UUser implements UInterface{
@@ -25,7 +27,10 @@ public class UUser implements UInterface{
 		System.out.println("2. Check the planes with destination.");
 		System.out.println("3. Add passenger.");
 		System.out.println("4. Remove passenger.");
-		System.out.println("5. Go back.");
+		System.out.println("5. Add person to database.");
+		System.out.println("6. Remove person from database.");
+		System.out.println("7. Show all people in the DB.");
+		System.out.println("8. Go back.");
 		System.out.println("Select option:");
 		
 		int x=0;
@@ -42,7 +47,10 @@ public class UUser implements UInterface{
 		case 2:   check();	        ;break;
 		case 3:   addPassenger();   ;break;
 		case 4:   removePassenger();;break;
-		case 5:   goBack()          ;break;
+		case 5:   addPersonDB();	;break;
+		case 6:	  removePersonDB();	;break;
+		case 7:   statusPerson()	;break;
+		case 8:   goBack()          ;break;
 		default: System.out.println("Invalid number.");
                  selector();        ;break;
 		}
@@ -92,6 +100,50 @@ public class UUser implements UInterface{
 		System.out.println("Tailnumber:");
 		tailNumber=c.readLine();
 		mgr.removePassenger(new Plane("", tailNumber, 0, 0, "", false));
+		continueWork();
+		
+	}
+	
+	public void addPersonDB() throws IOException{
+		
+		PersonManager mgr=new PersonManager();
+		String firstName;
+		String lastName;
+		int pesel;
+		String additionalInfo;
+		
+		System.out.println("******Adding person to database**************");
+		System.out.println("First name:");
+		firstName=c.readLine();
+		System.out.println("Last name:");
+		lastName=c.readLine();
+		System.out.println("Pesel:");
+		pesel=Integer.parseInt(c.readLine());
+		System.out.println("Additional Info:");
+		additionalInfo=c.readLine();
+		
+		mgr.addPerson(new Person(firstName,lastName,pesel,additionalInfo));
+		System.out.println("Dodano do bazy.");
+		continueWork();
+	}
+	public void removePersonDB() throws IOException{
+		PersonManager mgr=new PersonManager();
+		int pesel;
+		System.out.println("******Remove person from database**************");
+		System.out.println("Pesel:");
+		pesel=Integer.parseInt(c.readLine());
+		mgr.removePerson(new Person("", "", pesel, ""));
+		continueWork();
+	}
+	public void statusPerson() throws IOException{
+		
+		PersonManager mgr=new PersonManager();
+		System.out.println("***************************************************************************************");
+		System.out.format("%20s||%20s||%20s||%40s\n","FIRST NAME","LAST NAME","PESEL","ADDITIONAL INFO");
+		List<Person> persons=mgr.getAll();
+		for(Person p : persons){
+			System.out.println(p);
+		}
 		continueWork();
 		
 	}
