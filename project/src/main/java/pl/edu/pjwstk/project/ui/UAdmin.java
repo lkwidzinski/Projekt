@@ -85,7 +85,7 @@ public class UAdmin implements UInterface{
 		passengers=Integer.parseInt(c.readLine());
 		System.out.println("Destination:");
 		destination=c.readLine();
-		System.out.println("Is the plane ready fot flight?(true/false):");
+		System.out.println("Is the plane ready for flight?(true/false):");
 		readyToGo=Boolean.parseBoolean(c.readLine());
 		Plane plane=new Plane(name, tailNumber, capacity, passengers, destination, readyToGo);
 		

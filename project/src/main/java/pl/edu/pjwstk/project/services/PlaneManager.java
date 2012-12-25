@@ -28,8 +28,8 @@ public class PlaneManager implements PlaneInterface{
 		return db.addPassenger(obj,p);
 	}
 
-	public boolean removePassenger(Plane obj) {
-		return db.removePassenger(obj);
+	public boolean removePassenger(Plane obj,Person p) throws SQLException {
+		return db.removePassenger(obj,p);
 	}
 
 	public boolean removeAllPassengers(Plane obj) {

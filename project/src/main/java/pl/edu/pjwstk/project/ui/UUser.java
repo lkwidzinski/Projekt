@@ -98,12 +98,15 @@ public class UUser implements UInterface{
 	}
 	
 	public void removePassenger() throws IOException, SQLException{
-		
+	
 		String tailNumber;
+		int pesel;
 		System.out.println("******Removing passenger**************");
 		System.out.println("Tailnumber:");
 		tailNumber=c.readLine();
-		mgr.removePassenger(new Plane("", tailNumber, 0, 0, "", false));
+		System.out.println("PESEL:");
+		pesel=Integer.parseInt(c.readLine());
+		mgr.removePassenger(new Plane("", tailNumber, 0, 0, "", false),new Person("","",pesel,""));
 		continueWork();
 		
 	}

@@ -33,8 +33,9 @@ public final class DBmanager {
 	private String removePlaneSQL="DELETE FROM Planes where tailnumber=?;";
 	private String getAllSQL="SELECT * from Planes;";
 	private String addPassengerSQL="UPDATE Planes SET passengers=passengers+1 WHERE tailnumber=?;";
-	private String addPassengerSQL2="INSERT INTO Planes_has_Persons (plane_id,person_id) values (?,?);";
+	private String addPassengerSQL2="INSERT INTO Planes_has_Persons (plane_id,person_id) VALUES (?,?);";
 	private String removePassengerSQL="UPDATE Planes SET passengers=passengers-1 WHERE tailnumber=?;";
+	private String removePassengerSQL2="DELETE FROM Planes_has_Persons WHERE plane_id=? AND person_id=?;";
 	private String removeAllPassengersSQL="UPDATE Planes SET passengers=0 WHERE tailnumber=?;";
 	
 	//zapytania sql persons
@@ -110,7 +111,7 @@ public final class DBmanager {
 			removePlane=connection.prepareStatement(removePlaneSQL);
 			getAll=connection.prepareStatement(getAllSQL);
 			//addPassenger=connection.prepareStatement(addPassengerSQL);
-			removePassenger=connection.prepareStatement(removePassengerSQL);
+			//removePassenger=connection.prepareStatement(removePassengerSQL);
 			removeAllPassengers=connection.prepareStatement(removeAllPassengersSQL);
 			
 			addPerson=connection.prepareStatement(addPersonSQL);
@@ -189,14 +190,16 @@ public final class DBmanager {
 		ResultSet rs2=getAll.executeQuery();
 		while(rs2.next())
 		{
-		if(rs2.getString("tailnumber")==obj.getTailNumber())
-		plane_id=rs2.getInt("id");
+		if(rs2.getString("tailnumber").equalsIgnoreCase(obj.getTailNumber())){
+			plane_id=rs2.getInt("id");
+			break;}
 		}
 		rs2=getAllPersons.executeQuery();
 		while(rs2.next())
 		{
-		if(rs2.getInt("pesel")==p.getPesel())
-		person_id=rs2.getInt("id");
+		if(rs2.getInt("pesel")==p.getPesel()){
+			person_id=rs2.getInt("id");
+			break;}
 		}
 		addPassenger=connection.prepareStatement(addPassengerSQL);	
 		addPassenger.setString(1, obj.getTailNumber());
@@ -211,16 +214,43 @@ public final class DBmanager {
 		connection.rollback();
 		System.out.println("Blad przypisania pasazera do samolotu");
 		}
-		connection.setAutoCommit(false);
+		connection.setAutoCommit(true);
 		return false;
 	}
-	public boolean removePassenger(Plane obj) {
+	public boolean removePassenger(Plane obj,Person p) throws SQLException {
+		connection.setAutoCommit(false);
 		try {
+		int plane_id = 99;
+		int person_id = 99;
+		ResultSet rs2=getAll.executeQuery();
+		while(rs2.next())
+		{
+		if(rs2.getString("tailnumber").equalsIgnoreCase(obj.getTailNumber())){
+			plane_id=rs2.getInt("id");
+			break;}
+		}
+		rs2=getAllPersons.executeQuery();
+		while(rs2.next())
+		{
+		if(rs2.getInt("pesel")==p.getPesel()){
+			person_id=rs2.getInt("id");
+			break;}
+		}
+		removePassenger=connection.prepareStatement(removePassengerSQL);	
 		removePassenger.setString(1, obj.getTailNumber());
-		return removePassenger.execute();
+		removePassenger.execute();
+		removePassenger=connection.prepareStatement(removePassengerSQL2);
+		removePassenger.setInt(1, plane_id);
+		removePassenger.setInt(2, person_id);
+		removePassenger.execute();
+		connection.commit();
+		
 		} catch (SQLException e) {
 		e.printStackTrace();
+		connection.rollback();
+		System.out.println("Blad usuniecia pasazera z samolotu");
 		}
+		connection.setAutoCommit(true);
 		return false;
 	}
 	public boolean removeAllPassengers(Plane obj) {
@@ -272,5 +302,5 @@ public final class DBmanager {
 		}
 		return result;
 		
-	}
+	}		
 }

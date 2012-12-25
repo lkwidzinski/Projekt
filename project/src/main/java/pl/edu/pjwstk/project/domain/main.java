@@ -9,7 +9,7 @@ public class main {
 	/**
 	 * @param args
 	 * @throws IOException 
-	 * @throws SQLException 
+	 * @throws SQLException 2
 	 */
 	public static void main(String[] args) throws IOException, SQLException {
 	

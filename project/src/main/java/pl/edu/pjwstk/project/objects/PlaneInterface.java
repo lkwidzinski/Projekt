@@ -9,7 +9,7 @@ public interface PlaneInterface {
 	boolean removePlane(Plane obj);
 	List<Plane> getAll();
 	boolean addPassenger(Plane obj,Person p) throws SQLException;
-	boolean removePassenger(Plane obj);
+	boolean removePassenger(Plane obj,Person p) throws SQLException;
 	boolean removeAllPassengers(Plane obj);
 	
 	
